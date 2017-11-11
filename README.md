@@ -12,10 +12,7 @@ I was just learning how to make a react app is all.
 ## Development setup
 ```bash
 yarn install
-# Run this first
-npm run local-server
-# And then In a new terminal
-npm start
+npm run start-all
 ```
 
 ## NGROK usage
