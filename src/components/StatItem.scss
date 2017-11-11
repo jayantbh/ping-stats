@@ -1,0 +1,40 @@
+.vertical-el {
+  position: relative;
+  width: 100px;
+  overflow: hidden;
+}
+
+$wrapper-thickness: 100px;
+  
+.wrapper {
+  transform: rotate(-90deg);
+  transform-origin: $wrapper-thickness/2 center 0;
+  padding: 10px;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 0;
+  flex-shrink: 0;
+  white-space: pre;
+  height: $wrapper-thickness;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  font-size: 0.8em;
+  color: #627B9D;
+
+  a {
+    color: inherit;
+  }
+
+  &:empty {
+    display: none;
+  }
+}
+
+.content {
+  font-size: 3em;
+  font-weight: 600;
+}

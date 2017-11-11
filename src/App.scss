@@ -1,0 +1,36 @@
+@import "./variables.scss";
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 10px solid $tone-1;
+  color: $tone-5;
+  background-color: $tone-2;
+}
+
+.top-panel {
+  flex-grow: 1;
+  display: flex;
+}
+
+.about-me {
+  border-right: 10px solid $tone-1;
+  padding: 10px;
+  display: flex;
+}
+
+.quick-stats {
+  flex-grow: 1;
+  padding: 10px;
+  display: flex;
+
+  .quick-stats-content {
+    display: flex;
+  }
+}
+
+.bottom-panel {
+  border-top: 10px solid $tone-1;
+  min-height: 60%;
+}
