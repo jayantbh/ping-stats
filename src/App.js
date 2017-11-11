@@ -9,8 +9,6 @@ import readableTime from './helpers/readableTime';
 import LivePingChart from './components/LivePingChart';
 import StatItem from './components/StatItem';
 
-Number.isInfinite = function(n) { return n === Infinity }
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -19,14 +17,24 @@ class App extends Component {
       totalTimeSpentBetweenPings: 0,
       lastPingReceivedAt: 0,
       maxPing: null,
-      minPing: null
+      minPing: null,
+      smallLimitForAvg: 120,
+      bigLimitForAvg: 600
     };
   }
 
-  goodPings = () => this.state.pingResponses.filter((response) => Number.isFinite(response.responseTime));
-  goodPingsWithMutedBadPings = () => this.state.pingResponses.map((response) => Number.isFinite(response.responseTime) ? response : null);
-  badPings = () => this.state.pingResponses.filter((response) => Number.isInfinite(response.responseTime));
+  goodPings = () => this.state.pingResponses.filter(response => Number.isFinite(response.responseTime));
   pingLoss = () => `${(100 - (this.goodPings().length/this.state.pingResponses.length * 100) || 0).toFixed(2)}%`;
+  avgPing = (limit) => {
+    limit = Math.min(limit, this.state.pingResponses.length);
+    return (
+      this.state.pingResponses
+      .slice(-1 * limit)
+      .filter(response => Number.isFinite(response.responseTime))
+      .map(response => response.responseTime)
+      .reduce((a = 0,b = 0) => a+b, 0) / limit
+    ).toFixed(2);
+  }
 
   updatePingTime() {
     const now = new Date().getTime();
@@ -88,6 +96,8 @@ class App extends Component {
               <StatItem title="Ping loss" content={this.pingLoss()} />
               <StatItem title="Number of requests made" content={this.state.pingResponses.length} />
               <StatItem title="Ping range (ms)" content={`${this.state.minPing} - ${this.state.maxPing}`} />
+              <StatItem title="Average ping (last 120 requests/~2 min)" content={this.avgPing(this.state.smallLimitForAvg)} />
+              <StatItem title="Average ping (last 600 requests/~10 min)" content={this.avgPing(this.state.bigLimitForAvg)} />
             </div>
           </div>
         </div>
