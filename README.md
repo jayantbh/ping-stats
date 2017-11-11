@@ -19,9 +19,14 @@ npm run start-all
 ```bash
 ngrok start --all --config ./ngrok-conf.yml
 # Then in a browser, visit
-# https://<port3000-url>.ngrok.io?ws=<port8888-url>.ngrok.io
+# http://<port3000-url>?ws=<port8888-url>
 # Don't add the protocol for the port 8888 url.
+# Example (using image below):
+# http://70219c1b.ngrok.io?ws=12115b68.ngrok.io
 ```
+
+**Example image:**
+![image](https://i.snag.gy/Jws5I3.jpg)
 
 ## Why does this exist?
 Well, being a frequent online gamer, knowing how my internet connection is performing is important to me. And normally me or my friends just ping a public IP to see how our internet connection is doing. We keep it running for a while, all day sometimes, just so we know how it's been upto the time we decide to log in. 
