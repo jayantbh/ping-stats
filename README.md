@@ -1,6 +1,6 @@
 # Ping Stats
 
-![image](https://i.snag.gy/9Bgtpz.jpg)
+![image](https://i.snag.gy/MiZK2r.jpg)
 
 Shows stats for `ping 8.8.8.8`.
 That's all it does.
