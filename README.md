@@ -1,8 +1,8 @@
 # Ping Stats
 
-![image](https://i.snag.gy/MiZK2r.jpg)
+![image](https://i.snag.gy/2uxv9b.jpg)
 
-Shows stats for `ping 8.8.8.8`.
+Shows stats for the `ping` command.
 That's all it does.
 Really.
 
@@ -13,6 +13,17 @@ I was just learning how to make a react app is all.
 ```bash
 yarn install
 npm run start-all
+```
+From `v0.2.0` you can ping any host with an environment variable.
+```bash
+export PINGDOMAIN=google.com
+npm run start-all
+```
+If you want to be able to run this from anywhere, then for now add this in your `.bashrc/.zshrc/etc.`
+```bash
+alias pingstats='npm run start-all -prefix /path/to/ping-stats';
+# And then from any directory...
+pingstats
 ```
 
 ## NGROK usage
