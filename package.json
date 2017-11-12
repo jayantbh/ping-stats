@@ -25,6 +25,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "local-server": "nodemon server.js",
-    "server": "PORT=8888; node server.js"
+    "server": "export PORT=8888; node server.js",
+    "serve": "serve -s build",
+    "start-build": "export ENV=production; npm-run-all local-server serve"
   }
 }

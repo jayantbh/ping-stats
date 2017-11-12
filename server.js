@@ -4,6 +4,9 @@ const { spawn } = require('child_process');
 
 const PORT = process.env.PORT || 8888;
 const IP_OR_DOMAIN = process.env.PINGDOMAIN || '8.8.8.8';
+const ENVIRONMENT = process.env.ENV || 'development';
+
+if (ENVIRONMENT === 'production') console.log = () => {};
 
 const child = spawn('ping', [IP_OR_DOMAIN]);
 const wss = new WebSocket.Server({ port: PORT });
