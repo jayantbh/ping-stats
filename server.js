@@ -3,15 +3,16 @@ const WebSocket = require('ws');
 const { spawn } = require('child_process');
 
 const PORT = process.env.PORT || 8888;
+const IP_OR_DOMAIN = process.env.PINGDOMAIN || '8.8.8.8';
 
-const child = spawn('ping', ['8.8.8.8']);
+const child = spawn('ping', [IP_OR_DOMAIN]);
 const wss = new WebSocket.Server({ port: PORT });
 
 child.stdout.setEncoding('utf8');
 child.stdout.on('data', (data) => {
   // data = data.trim(); // just to strip the trailing newline after a ping command.
   wss.broadcast({ type: 'ping_response', data });
-  console.log(data)
+  console.log(data);
 });
 
 // Broadcast to all.
@@ -27,4 +28,5 @@ wss.broadcast = function broadcast(payload) {
 
 wss.on('connection', function connection(ws) {
   console.log('client connected');
+  ws.send(JSON.stringify({ type: 'ping_connection', data: IP_OR_DOMAIN }));
 });

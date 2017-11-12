@@ -13,6 +13,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      pingHost: 'Connecting...',
       pingResponses: [],
       totalTimeSpentBetweenPings: 0,
       lastPingReceivedAt: 0,
@@ -58,16 +59,25 @@ class App extends Component {
   }
   handleResponse(payload) {
     const { data, type } = serializeResponse(payload);
-    
-    if (type !== 'ping_response') return;
-    this.updatePingTime();
 
-    const pingResponses = this.state.pingResponses.slice();
-    const pingData = extractPingData(data);
-    pingResponses.push(pingData);
-    this.analyzePingData(pingData);
+    switch(type) {
+      case 'ping_connection':
+        this.setState({ pingHost: data });
+        break;
 
-    this.setState({ pingResponses });
+      case 'ping_response':
+        this.updatePingTime();
+
+        const pingResponses = this.state.pingResponses.slice();
+        const pingData = extractPingData(data);
+        pingResponses.push(pingData);
+        this.analyzePingData(pingData);
+
+        this.setState({ pingResponses });
+        break;
+
+      default: return;
+    }
   }
   websocketUrl = () => {
     try {
@@ -91,6 +101,7 @@ class App extends Component {
           </div>
           <div className="quick-stats">
             <div className="quick-stats-content">
+              <StatItem title="Pinging host" content={this.state.pingHost} />
               <StatItem title="Time spent pinging" content={readableTime(this.state.totalTimeSpentBetweenPings)} />
               <StatItem title="Last ping received at" content={moment(this.state.lastPingReceivedAt).format('h:mm:ss a')} />
               <StatItem title="Ping loss" content={this.pingLoss()} />
