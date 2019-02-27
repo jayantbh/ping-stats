@@ -5409,9 +5409,9 @@ react-scripts@1.0.17:
   optionalDependencies:
     fsevents "1.1.2"
 
-react-websocket@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-websocket/-/react-websocket-1.2.0.tgz#df15e866ab9a0660b4155101dc5aa560bff6c12c"
+react-websocket@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-websocket/-/react-websocket-2.0.1.tgz#38df1d9b57825a0ec7c9cf8f8f461d17a0150b7e"
 
 react@^16.1.0:
   version "16.1.0"
