@@ -10,7 +10,7 @@
     "react": "^16.1.0",
     "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.8.3",
-    "react-scripts": "1.0.17",
+    "react-scripts": "2.1.5",
     "react-websocket": "^2.0.1",
     "ws": "^3.3.1"
   },
