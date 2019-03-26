@@ -7337,9 +7337,9 @@ react-app-polyfill@^0.2.2:
     raf "3.4.1"
     whatwg-fetch "3.0.0"
 
-react-chartjs-2@^2.7.4:
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/react-chartjs-2/-/react-chartjs-2-2.7.4.tgz#e41ea4e81491dc78347111126a48e96ee57db1a6"
+react-chartjs-2@^2.7.5:
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/react-chartjs-2/-/react-chartjs-2-2.7.5.tgz#75b1408e0f02c35a04386d4d0731aaaade72e471"
   dependencies:
     lodash "^4.17.4"
     prop-types "^15.5.8"
