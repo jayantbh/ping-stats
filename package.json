@@ -12,7 +12,7 @@
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8",
     "react-websocket": "^2.0.1",
-    "ws": "^6.2.1"
+    "ws": "^7.4.6"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
